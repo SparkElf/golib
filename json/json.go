@@ -19,6 +19,13 @@ func Marshal(data interface{}) string {
 	}
 	return string(b)
 }
+func MarshalAndFormat(data interface{}) string {
+	b, err := json.Marshal(data)
+	if err != nil {
+		panic(err)
+	}
+	return string(ToJson(string(b)))
+}
 func Unmarshal(s string) interface{} {
 	var result interface{}
 	d := json.NewDecoder(strings.NewReader(s))
